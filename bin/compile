@@ -147,5 +147,5 @@ fi
 
 echo $BUILD_DIR
 echo "mongo db driver!" 
-$BUILD_DIR/php/bin/php $BUILD_DIR/php/bin/pecl install mongo
+$BUILD_DIR/php/bin/pecl install mongo
 
