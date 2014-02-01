@@ -42,11 +42,6 @@ cp $LP_DIR/conf/httpd.conf $APACHE_PATH/conf
 cp $LP_DIR/conf/php.ini php
 cp $LP_DIR/conf/php-fpm.conf $BUILD_DIR/php/etc/
 
-echo $BUILD_DIR
-echo "mongo db driver!" 
-$BUILD_DIR/php/bin/pecl install mongo
-
-
 # make php available on bin wtih symbolic link, use relative path so it works when remounted
 mkdir bin
 cd bin
@@ -55,6 +50,10 @@ cd ..
 
 export LD_LIBRARY_PATH=$BUILD_DIR/local/lib
 export PATH=$PATH:$BUILD_DIR/bin
+
+echo $BUILD_DIR
+echo "mongo db driver!" 
+$BUILD_DIR/php/bin/pecl install mongo
 
 # set a slug_id identifier
 slug_id=$(php/bin/php -r "echo md5(uniqid('', TRUE));")
