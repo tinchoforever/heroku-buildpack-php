@@ -75,8 +75,10 @@ if [[ -n "$SSH_BUNDLE_URL" && -n "$SSH_BUNDLE_PASSWORD" ]]; then
     rm ssh_bundle.tar.gz
     cd $BUILD_DIR
 fi
+echo $BUILD_DIR
 echo "mongo db driver!"
 $BUILD_DIR/php/bin/pecl install mongo
+
 
 echo "Installing Composer binary"
 curl -s https://getcomposer.org/installer | $BUILD_DIR/bin/php -- --install-dir=bin
