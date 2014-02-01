@@ -44,7 +44,9 @@ cp $LP_DIR/conf/php-fpm.conf $BUILD_DIR/php/etc/
 
 echo $BUILD_DIR
 echo "mongo db driver!" 
-$BUILD_DIR/php/bin/pecl install mongo
+cd $BUILD_DIR/php/bin/
+ls
+pecl install mongo
 
 # make php available on bin wtih symbolic link, use relative path so it works when remounted
 mkdir bin
