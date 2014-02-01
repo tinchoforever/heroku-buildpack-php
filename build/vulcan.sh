@@ -105,7 +105,7 @@ ${MAKE} install
 /app/php/bin/pear config-set php_dir /app/php
 echo " " | /app/php/bin/pecl install memcache
 echo " " | /app/php/bin/pecl install apc-3.1.13
-echo " " | /app/php/bin/pecl install mongo
+/app/php/bin/pecl install mongo
 /app/php/bin/pecl install igbinary
 
 # cd /tmp/cyrus-sasl-2.1.25
