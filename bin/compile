@@ -51,9 +51,7 @@ cd ..
 export LD_LIBRARY_PATH=$BUILD_DIR/local/lib
 export PATH=$PATH:$BUILD_DIR/bin
 
-echo $BUILD_DIR
-echo "mongo db driver!" 
-$BUILD_DIR/php/bin/pecl install mongo
+
 
 # set a slug_id identifier
 slug_id=$(php/bin/php -r "echo md5(uniqid('', TRUE));")
@@ -146,3 +144,8 @@ if [ -d $BUILD_DIR/www/.heroku -a -f $BUILD_DIR/www/.heroku/compile.sh ]; then
     /usr/bin/env bash $BUILD_DIR/www/.heroku/compile.sh
     rm $BUILD_DIR/www/.heroku/compile.sh
 fi
+
+echo $BUILD_DIR
+echo "mongo db driver!" 
+$BUILD_DIR/php/bin/php $BUILD_DIR/php/bin/pecl install mongo
+
