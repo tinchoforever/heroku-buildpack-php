@@ -41,6 +41,8 @@ echo "downloading php"
 curl -L http://us.php.net/get/php-5.5.4.tar.gz/from/us2.php.net/mirror -o /tmp/php-5.5.4.tar.gz
 echo "downloading pecl-memcached"
 curl -L http://pecl.php.net/get/memcached-2.1.0.tgz -o /tmp/memcached-2.1.0.tgz
+echo "downloading pecl-mongo	"
+curl -L http://pecl.php.net/get/mongo-1.4.5.tgz -o /tmp/mongo-1.4.5.tgz
 echo "download zlib"
 curl -L http://zlib.net/zlib-1.2.8.tar.gz -o /tmp/zlib-1.2.8.tar.gz
 # echo "downloading pecl zip extension"
@@ -60,6 +62,7 @@ mv /tmp/httpd-2.4.6/srclib/apr-util-1.5.2 /tmp/httpd-2.4.6/srclib/apr-util
 
 tar -C /tmp -xzf /tmp/php-5.5.4.tar.gz
 tar -C /tmp -xzf /tmp/memcached-2.1.0.tgz
+tar -C /tmp -xzf /tmp/mongo-1.4.5.tgz
 tar -C /tmp -xzf /tmp/zlib-1.2.8.tar.gz
 # tar -C /tmp -xzf /tmp/zip-1.10.2.tgz
 
@@ -102,6 +105,7 @@ ${MAKE} install
 /app/php/bin/pear config-set php_dir /app/php
 echo " " | /app/php/bin/pecl install memcache
 echo " " | /app/php/bin/pecl install apc-3.1.13
+echo " " | /app/php/bin/pecl install mongo
 /app/php/bin/pecl install igbinary
 
 # cd /tmp/cyrus-sasl-2.1.25
@@ -121,6 +125,13 @@ cd /tmp/memcached-2.1.0
   --prefix=/app/php \
   --enable-memcached-igbinary \
   --enable-memcached-json \
+  --with-php-config=/app/php/bin/php-config \
+  --enable-static
+${MAKE} && ${MAKE} install
+
+cd /tmp/mongo-1.4.5
+/app/php/bin/phpize
+./configure --prefix=/app/php \
   --with-php-config=/app/php/bin/php-config \
   --enable-static
 ${MAKE} && ${MAKE} install
