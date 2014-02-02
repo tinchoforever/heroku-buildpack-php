@@ -37,6 +37,8 @@ echo "-----> Extracting Apache $APACHE_VERSION PHP $PHP_VERSION build $BUILDPACK
 echo "-----> from $OPT_BUILDPACK_URL"
 curl --silent --max-time 60 --location "$OPT_BUILDPACK_URL" | tar xz
 
+
+
 # update config files
 cp $LP_DIR/conf/httpd.conf $APACHE_PATH/conf
 cp $LP_DIR/conf/php.ini php
@@ -95,8 +97,9 @@ if [ -d ~/.ssh ]; then
     rm -rf ~/.ssh
 fi
 
-cp $CACHE_DIR/www/ext/mongo.so $BUILD_DIR/php/lib/php/extensions/no-debug-non-zts-20121212/mongo.so
+#cp $CACHE_DIR/www/ext/mongo.so $BUILD_DIR/php/lib/php/extensions/no-debug-non-zts-20121212/mongo.so
 
+ls /app/php/bin
 
 cat >>boot.sh <<EOF
 echo "Checking for WWWROOT environment variable..."
