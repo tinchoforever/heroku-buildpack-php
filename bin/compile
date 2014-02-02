@@ -10,7 +10,7 @@ APACHE_PATH="apache"
 PHP_VERSION="5.5.4"
 PHP_PATH="php"
 BUILDPACK_VERSION="2.0-a9"
-#OPT_BUILDPACK_URL="http://vulcan-wlian.herokuapp.com/output/d7c61c2c-835c-47f5-a351-f1f014556b04"
+OPT_BUILDPACK_URL="http://vulcan-wlian.herokuapp.com/output/d7c61c2c-835c-47f5-a351-f1f014556b04"
 
 BIN_DIR=$(dirname $0)
 BUILD_DIR=$1
@@ -33,10 +33,9 @@ if [ -f www/Procfile ]; then
   mv www/Procfile .
 fi
 
-#echo "-----> Extracting Apache $APACHE_VERSION PHP $PHP_VERSION build $BUILDPACK_VERSION"
-#echo "-----> from $OPT_BUILDPACK_URL"
-#curl --silent --max-time 60 --location "$OPT_BUILDPACK_URL" | tar xz
-$LP_DIR/build/vulcan.sh
+echo "-----> Extracting Apache $APACHE_VERSION PHP $PHP_VERSION build $BUILDPACK_VERSION"
+echo "-----> from $OPT_BUILDPACK_URL"
+curl --silent --max-time 60 --location "$OPT_BUILDPACK_URL" | tar xz
 
 # update config files
 cp $LP_DIR/conf/httpd.conf $APACHE_PATH/conf
@@ -95,6 +94,9 @@ fi
 if [ -d ~/.ssh ]; then
     rm -rf ~/.ssh
 fi
+
+cp $LP_DIR/ext/mongo.so $BUILD_DIR/php/lib/php/extensions/no-debug-non-zts-20121212/mongo.so
+
 
 cat >>boot.sh <<EOF
 echo "Checking for WWWROOT environment variable..."
