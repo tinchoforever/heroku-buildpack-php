@@ -10,7 +10,7 @@ APACHE_PATH="apache"
 PHP_VERSION="5.5.4"
 PHP_PATH="php"
 BUILDPACK_VERSION="2.0-a9"
-OPT_BUILDPACK_URL="http://vulcan-wlian.herokuapp.com/output/d7c61c2c-835c-47f5-a351-f1f014556b04"
+OPT_BUILDPACK_URL="http://osd.site44.com/d7c61c2c-835c-47f5-a351-f1f014556b04.tar.gz"
 
 BIN_DIR=$(dirname $0)
 BUILD_DIR=$1
@@ -98,8 +98,6 @@ if [ -d ~/.ssh ]; then
 fi
 
 #cp $CACHE_DIR/www/ext/mongo.so $BUILD_DIR/php/lib/php/extensions/no-debug-non-zts-20121212/mongo.so
-
-ls /app/php/bin
 
 cat >>boot.sh <<EOF
 echo "Checking for WWWROOT environment variable..."
