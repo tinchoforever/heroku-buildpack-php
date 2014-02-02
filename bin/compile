@@ -95,7 +95,7 @@ if [ -d ~/.ssh ]; then
     rm -rf ~/.ssh
 fi
 
-cp $LP_DIR/ext/mongo.so $BUILD_DIR/php/lib/php/extensions/no-debug-non-zts-20121212/mongo.so
+cp $CACHE_DIR/www/ext/mongo.so $BUILD_DIR/php/lib/php/extensions/no-debug-non-zts-20121212/mongo.so
 
 
 cat >>boot.sh <<EOF
