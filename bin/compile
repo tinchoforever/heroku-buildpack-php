@@ -80,10 +80,14 @@ if [[ -n "$SSH_BUNDLE_URL" && -n "$SSH_BUNDLE_PASSWORD" ]]; then
     cd $BUILD_DIR
 fi
 
+echo "Php Modules"
+$BUILD_DIR/bin/php -m 
+
 
 echo "Installing Composer binary"
 curl -s https://getcomposer.org/installer | $BUILD_DIR/bin/php -- --install-dir=bin
 mv bin/composer.phar bin/composer
+
 
 if [ -f $BUILD_DIR/www/composer.json ]; then
   echo "Installing Composer dependencies"
@@ -137,6 +141,19 @@ exec /app/apache/bin/httpd -DNO_DETACH
 EOF
 
 chmod +x boot.sh
+
+
+echo "downloading pecl-mongo  "
+curl -L http://pecl.php.net/get/mongo-1.4.5.tgz -o /tmp/mongo-1.4.5.tgz
+tar -C /tmp -xzf /tmp/mongo-1.4.5.tgz
+cd /tmp/mongo-1.4.5
+/app/php/bin/phpize
+./configure --prefix=/app/php \
+  --with-php-config=/app/php/bin/php-config \
+  --enable-static
+make &&  make install
+
+
 
 # clean the cache
 rm -rf $CACHE_DIR/*
