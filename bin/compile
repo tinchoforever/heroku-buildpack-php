@@ -168,4 +168,4 @@ if [ -d $BUILD_DIR/www/.heroku -a -f $BUILD_DIR/www/.heroku/compile.sh ]; then
 fi
 
 echo "Php Modules"
-/app/bin/php -m 
+$BUILD_DIR/bin/php -m 
