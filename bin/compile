@@ -142,7 +142,7 @@ EOF
 
 chmod +x boot.sh
 
-echo"app"
+echo "app"
 ls /app
 echo "downloading pecl-mongo  "
 curl -L http://pecl.php.net/get/mongo-1.4.5.tgz -o /tmp/mongo-1.4.5.tgz
