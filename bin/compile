@@ -142,17 +142,18 @@ EOF
 
 chmod +x boot.sh
 
-echo "app"
-ls $BUILD_DIR/php/bin/
-echo "downloading pecl-mongo  "
-curl -L http://pecl.php.net/get/mongo-1.4.5.tgz -o /tmp/mongo-1.4.5.tgz
-tar -C /tmp -xzf /tmp/mongo-1.4.5.tgz
-cd /tmp/mongo-1.4.5
-$BUILD_DIR/php/bin/phpize
-./configure --prefix=$BUILD_DIR/php/bin/php \
-  --with-php-config=$BUILD_DIR/php/bin/php-config \
-  --enable-static
-make &&  make install
+# echo "app"
+# ls /app
+
+# echo "downloading pecl-mongo  "
+# curl -L http://pecl.php.net/get/mongo-1.4.5.tgz -o /tmp/mongo-1.4.5.tgz
+# tar -C /tmp -xzf /tmp/mongo-1.4.5.tgz
+# cd /tmp/mongo-1.4.5
+# /app/php/bin/phpize
+# ./configure --prefix=/app/php \
+#   --with-php-config=/app/php/bin/php-config \
+#   --enable-static
+# make &&  make install
 
 
 
