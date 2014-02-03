@@ -35,7 +35,7 @@ fi
 echo "-----> Extracting Apache $APACHE_VERSION PHP $PHP_VERSION build $BUILDPACK_VERSION"
 echo "-----> from CurrentDirectory"
 ls
-tar xz pack/d7c61c2c-835c-47f5-a351-f1f014556b04.tar.gz
+tar xz $CACHE_DIR/www/pack/d7c61c2c-835c-47f5-a351-f1f014556b04.tar.gz
 
 
 
